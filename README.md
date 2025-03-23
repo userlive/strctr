@@ -26,8 +26,8 @@ RewriteRule ^.*$ / [NC,L,QSA]
 
 Таблица 1. Пример сопоставления с пространством имен
 
-| Префикс           | директория | объект |
-|-------------------|------------|--------|
-https://example.ru/ | test/ | test |
-/srv/http/example.ru/ | test/ | test.php |
-namespace | test/ | new test(); | 
+| Система | Префикс           | директория | объект |
+|---------|-------------------|------------|--------|
+|Браузер|https://example.ru/ | test/ | test |
+|ОС|/srv/http/example.ru/ | test/ | test.php |
+|Скрипт|namespace | test/ | new test(); | 
