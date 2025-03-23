@@ -14,3 +14,8 @@ Nginx
 ```
 rewrite ^(.*)$ /index.php last;
 ```
+Apache
+```
+RewriteEngine on
+RewriteRule ^.*$ / [NC,L,QSA]
+```
