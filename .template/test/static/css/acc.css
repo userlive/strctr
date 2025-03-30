@@ -1,0 +1,12 @@
+.spoiler {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: 1s;
+    overflow: hidden;
+}
+.spoiler .content {
+    min-height: 0;
+}
+.spoiler.expanded {
+    grid-template-rows: 1fr;
+}

@@ -1,0 +1,89 @@
+.methods {
+	text-align: justify;
+}
+
+.method:first-child {
+	margin-left: 0px;
+}
+
+.method {
+	transition: all 0.3s; position: relative; display: inline-block; border: none; color: #d5d5d5;
+}
+
+.method span {
+	display: inline-block; padding: 12px 8px; text-decoration: underline dashed 1px;
+}
+
+a.method {
+	display: inline-block;
+}
+		  
+.method:last-child {
+	margin-right: 0px; width: 100%; height: 0; visibility: hidden;
+}
+
+a.btn {
+	color: #000; text-decoration: none; font-weight: bold;
+}
+
+.btn {
+	position: relative; display: inline-block; padding: 6px 12px;
+}
+
+.btn::before, .btn::after
+{
+	position: absolute;	border: 1px solid #000; width: 6px; content: ""; top: 0; bottom: 0;
+}
+
+.btn::before {
+	left: 0; border-right: 0px; 
+}
+.btn::after {
+	right: 0; border-left: 0px; 
+}
+
+.method::before, .method::after,
+.method span::before,
+.method span::after
+{
+	position: absolute;	border: 1px solid #d5d5d5; width: 6px; height: 6px; transition: all 0.3s; opacity: 0; content: "";
+}
+
+.method::before {
+  top: 0; left: 0; border-right: none; border-bottom: none; transform: translate(-50%, -50%);
+}
+
+.method::after {
+  bottom: 0; left: 0; border-right: none; border-top: none; transform: translate(-50%, 50%);
+}
+
+.method span::before {
+  top: 0; right: 0; border-left: none; border-bottom: none; transform: translate(50%, -50%);
+}
+
+.method span::after {
+  bottom: 0; right: 0; border-left: none; border-top: none; transform: translate(50%, 50%);
+}
+
+.method.active,
+.method.active span,
+.method.active::before,
+.method.active::after,
+.method.active span::before,
+.method.active span::after,
+.method:hover,
+.method:hover::before,
+.method:hover::after,
+.method:hover span::before,
+.method:hover span::after
+{
+  color: #000; border-color: #000; opacity: 1; transform: translate(0%, 0%); text-decoration: none;
+}
+
+.interpret {
+   display: none;
+}
+
+.interpret.active {
+   display: block;
+}

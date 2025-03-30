@@ -1,0 +1,22 @@
+@file core\architecture\convert.php
+@namespace core\arhitecture;
+@call new \core\architecture\convert($value = 0, $definition);
+@overload property:
+
+
+@file core\architecture\protocol.php
+@namespace core\arhitecture;
+@call new \core\architecture\protocol($value = 0, sessia $client);
+
+
+
+@file core\architecture\registry.php
+@namespace core\arhitecture;
+@call new \core\architecture\convert($value = 0, $definition);
+@overload property:
+
+
+@file core\architecture\sessia.php
+@namespace core\arhitecture;
+@call new \core\architecture\convert($value = 0, $definition);
+@overload property:

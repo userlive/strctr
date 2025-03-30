@@ -1,0 +1,77 @@
+body {
+	margin: 0px; font-family: Arial; color: #111
+}
+
+ol li {
+	margin: 8px 0 8px 0;
+}
+
+.wrp {
+	width: 1024px; margin: 0 auto;
+}
+
+.ctrl {
+	padding: 12px;
+}
+
+.ctrl form {
+	width: 33%;
+	float: left;
+}
+
+.ctrl hr {
+	clear: both;
+	position:relative;
+	top: 30px;
+}
+
+.wrp p {
+	padding: 12px 0;
+}
+
+.cols {
+	margin: 14px 0px;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.cols .col {
+  flex: flex-grow;
+  flex-grow: 1;
+  width: 50%;
+}
+
+.report ul {
+	list-style: none;
+	padding: 0;
+}
+
+.report ul li {
+	margin: 6px 12px 6px 0px;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px dotted #000;
+}
+
+.report ul li span {
+	position: relative;
+	top: 4px;
+	background-color: white;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.report ul li span:first-child {
+	max-width: 45%;
+}
+
+.report ul li span:last-child {
+	max-width: 45%;
+}
+
+.report .name, .report .value {
+	font-size: 13px;
+}

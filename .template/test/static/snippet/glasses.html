@@ -1,0 +1,378 @@
+
+<script id="wrap" type="text/template">
+<style>
+	.table>:not(caption)>*>* {
+		border-bottom-width: 0px;
+	}
+
+	table.listing>:not(:first-child), table.listing tbody {
+		border-top: 0px;
+	}
+
+	table.listing tbody tr td {
+		vertical-align: middle
+	}
+
+	table.listing tbody tr td span.count, table.listing tbody tr td.preview a {
+		font-size: 0.85em;
+		color: rgb(215, 215, 215);
+	}
+
+	#filter_control span, #display_control span {
+		margin-right:5px;
+	}
+
+	#filter_control {
+		display: inline-block;
+		width: 150px;
+	}
+
+	#display_control {
+	
+	}
+
+	/* preview */
+
+	table.listing tbody tr td.preview span {
+		padding: 0 3px 3px 3px;
+	}
+	
+	table.listing tbody tr td.preview div.img *:hover {
+		cursor: pointer;
+		color: black;
+		background: white;
+	}
+	
+	table.listing tbody tr td.preview div.img span.id {
+		position: absolute;
+		top: 3px;
+		left: 3px;
+		font-size: 0.8em
+	}
+	
+	table.listing tbody tr td.preview div.img span.external {
+		position: absolute;
+		top: 3px;
+		right: 3px;
+		font-size: 0.8em
+	}
+	
+	table.listing tbody tr td.preview div.img span.upload {
+		position: absolute;
+		bottom: 3px;
+		left: 3px;
+		font-size: 0.8em
+	}
+	
+	table.listing tbody tr td.preview {
+		color: rgb(224, 216, 166);
+		position: relative;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	
+	table.listing tbody tr td.preview div.img {
+		width: 150px;
+		height: 150px;
+		position: relative;
+		display: inline-block;
+		border: 0px solid #ccc;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-image: url('/.template/og/static/img/glasses.png');
+	}
+	
+	/* name, brand, model */
+	
+	table.listing tbody tr td.name a {
+		color: #212529;
+		border-bottom: 1px dashed #212529;
+		text-decoration: none;
+	}
+
+	table.listing tbody tr td span.on {
+		color: rgb(184, 224, 166);
+	}
+
+	table.listing tbody tr td span.off {
+		color: rgb(224, 166, 166)
+	}
+
+	table.listing tbody tr td span.reserve {
+		color: rgb(224, 216, 166);
+	}
+	
+	table.listing tbody tr td span.margin {
+		font-size: 0.8em
+	}
+
+	.category {
+		margin: 12px 0 4px 0;
+	}
+	
+	td.name .container {
+		padding: 0px;
+		margin: 0px;
+	}
+
+	td.name .row {
+		--bs-gutter-x: 0rem;
+	}
+
+	.name, .value {
+		border-bottom: 1px dotted #212529;
+		padding: 0px;
+	}
+	
+	.name span, .value span {
+		background-color: white;
+		padding: 4px 0;
+		position: relative;
+		bottom: -1px;
+	}
+	
+</style>
+
+<div class="container-fluid">
+	<table class="table listing">
+	
+		<thead>
+		
+			<tr class="glasses checked" data-id="1">
+				<th class="preview text-center">
+					<div id="filter_control" class="text-start">
+						<span class="filter" style="cursor: pointer;"><svg width="16" height="16"><use xlink:href="#filter"></use></svg></span>
+						<span class="check" style="cursor: pointer;"><svg width="16" height="16"><use xlink:href="#check"></use></svg></span>
+						<span class="ckeck_all" style="cursor: pointer;"><svg width="16" height="16"><use xlink:href="#check_all"></use></svg></span>
+					</div>
+				</th>
+				<th class="name">
+					<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+					  <input type="radio" class="btn-check" disabled id="btncheck1" checked autocomplete="off">
+					  <label class="btn btn-outline-dark" for="btncheck1">Название</label>
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">А-Я ↓</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">По алфавиту А-Я ↓</a></li>
+								<li><a class="dropdown-item" href="#">Наоборот Я-А ↑</a></li>
+							</ul>
+						</div>
+					</div>
+				</th>
+				<th class="price">
+					<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+					  <div class="btn-group" role="group">
+							<button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Цена</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">Дешевле</a></li>
+								<li><a class="dropdown-item" href="#">Дороже</a></li>
+							</ul>
+						</div>
+					</div>
+				</th>
+				<th>&nbsp;</th>
+				<th class="text-end">
+					<div id="display_control">
+					<span class="list" style="cursor: pointer"><svg width="16" height="16"><use xlink:href="#list"></use></svg></span>
+					<span class="listing" style="cursor: pointer"><svg width="16" height="16"><use xlink:href="#listing"></use></svg></span>
+					<span class="setting" style="cursor: pointer"><svg width="16" height="16"><use xlink:href="#setting"></use></svg></span>
+					</div>
+				</th>
+			</tr>
+		
+		</thead>
+	
+		<tbody>
+			<%= list %>
+		</tbody>
+	</table>
+</div>
+</script>
+<script id="list" type="text/template">
+
+	<tr class="glasses" data-id="<%= id %>">
+		<td class="preview p-2 ps-0 text-center">
+			<div class="img">
+				<span class="external"><svg width="10" height="10"><use xlink:href="#external"></use></svg></span>
+				<span class="id"><a href="#"># <%= id %></a></span>
+				<span class="upload"><svg width="10" height="10"><use xlink:href="#upload"></use></svg></span>
+			</div>
+		</td>
+		<td class="name p-4" style="width: 41%">
+			<a class="intro" role="button" aria-expanded="false" aria-controls="properties">
+				<b><%= name %> <%= brand %> <%= model %></b>
+			</a>
+			<br />
+			<small>
+				<span class="count available on">В наличии: <%= available %> шт.;</span> 
+				<span class="count reserve off ps-2">В резерве: <%= reserve %> шт.;</span>
+				<span class="count released off ps-2">Отпущено: <%= sold %> шт.</span>
+			</small>
+			<div class="row collapse">
+				<div class="category col-12"><h6>Характеристики модели</h6></div>
+				<div class="row  property">
+					<div class="col-md-6 name"><span>Название свойства 1</span></div><div class="col-md-6 value text-end"><span>1 c</span></div>
+				</div>
+				<div class="row  property">
+					<div class="col-md-6 name"><span>Название свойства 2</span></div><div class="col-md-6 value text-end"><span>1 c</span></div>
+				</div>
+			</div>
+		</td>
+		<td><b><%= price %> р.</b><br /><span class="count margin">маржа <%= marge %>%</small></td>
+		<td><b><%= create %></b><br /><span>&nbsp;</span></td>
+		<td class="edit text-end ">
+			<div class="element btn-group" role="group" aria-label="Default button group">
+				<button type="button" class="copy btn btn-outline-dark btn-sm" title="Сделать копию"><svg class="bi" width="16" height="16"><use xlink:href="#copy"></use></svg></button>
+				<button type="button" class="edit btn btn-outline-dark btn-sm" title="Редактировать"><svg class="bi" width="16" height="16"><use xlink:href="#edit"></use></svg></button>
+				<button type="button" class="share btn btn-outline-dark btn-sm" title="Поделиться"><svg class="bi" width="16" height="16"><use xlink:href="#share"></use></svg></button>
+				<button type="button" class="trash btn btn-outline-dark btn-sm" title="Удалить"><svg class="bi" width="16" height="16"><use xlink:href="#trash"></use></svg></button>
+			</div>
+		</td>
+	</tr>
+</script>
+
+<script id="view" type="text/template">
+	Полное описание объекта
+</script>
+
+<script id="prop" type="text/template">
+	Свойства объекта
+</script>
+
+<script id="edit" type="text/template">
+	<style>
+		.form-check-inline {
+			margin: 3px 0 11px 0; 
+		}
+	</style>
+	<div class="container-fluid">
+		
+		<div class="row">
+			<form enctype="multipart/form-data">
+				<div class="col-12">
+					<% if(id) { %>
+						<h3><%= id %> # <%= title %> <%= brand %> <%= model %></h3>
+						<input type="hidden" name="id" id="id" value="<%= id %>">
+					<% } else { %>
+						<h3>Добавить очки</h3>
+					<% } %>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mt-3">
+						<br>
+						<h4>Описание</h4>
+						<div class="mb-3">
+							<div class="form-label"><b>Тип очков</b></div>
+							<div class="row ps-3">
+								<div class="col-md-3 form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="type" id="type_0" value="0"<% if(type=="0") { %> checked<% } %>>
+									<label class="form-check-label" for="type_0">Солнцезащитные</label>
+								</div>
+								<div class="col-md-3 form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="type" id="type_1" value="1"<% if(type==1) { %> checked<% } %>>
+									<label class="form-check-label" for="type_1">Спортивные</label>
+								</div>
+								<div class="col-md-3 form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="type" id="type_2" value="2"<% if(type==2) { %> checked<% } %>>
+									<label class="form-check-label" for="type_2">Лыжные</label>
+								</div>
+								<div class="col-md-3 form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="type" id="type_3" value="3"<% if(type==3) { %> checked<% } %>>
+									<label class="form-check-label" for="type_3">Оправа</label>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-4">
+								<label for="brand" class="form-label"><b>Брэнд</b></label>
+								<input type="text" name="brand" class="form-control" id="brand"<% if(brand) { %> value="<%= brand %>"<% } %> placeholder="NoName" />
+							</div>
+							<div class="col-md-4">
+								<label for="model" class="form-label"><b>Номер модель или SKU</b></label>
+								<input type="text" name="model" class="form-control" id="model"<% if(model) { %> value="<%= model %>"<% } %> placeholder="SKU или модель" />
+							</div>
+							<div class="col-md-4">
+								<label for="price" class="form-label"><b>Цена в рублях</b></label>
+								<input type="text" name="price" class="form-control" id="price"<% if(price) { %> value="<%= price %>"<% } else { %> placeholder="0.00 руб."<% } %>>
+							</div>
+						</div>
+						<div class="row mb-3">
+							<div class="col-md-6">
+								<label for="preview" class="form-label"><b>Основное изображение</b></label>
+								<input type="file" name="preview" class="form-control" id="preview">
+							</div>
+							<div class="col-md-6">
+								<label for="available" class="form-label"><b>Кол-во в наличии</b></label>
+								<input type="text" name="available" class="form-control" id="available"<% if(available) { %> value="<%= available %>"<% } else { %> placeholder="0"<% } %> />
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="name" class="form-label"><b>Название</b></label>
+							<input type="text" name="name" class="form-control" id="name"<% if(name) { %> value="<%= name %>"<% } else { %> placeholder="Солнцезащитные очки"<% } %> />
+						</div>
+						<div class="mb-3">
+						  <label for="description" class="form-label"><b>Описание</b></label>
+						  <textarea name="description" class="form-control" id="description" rows="3"<% if(!description) { %>placeholder="Произвольное описание ..."<% } %>><% if(description) { %><%= description %><% } %></textarea>
+						</div>
+					</div>
+					<div class="col-md-6 mt-3">
+						<br>
+						<h4>Свойства</h4>
+						<div class="mb-3">
+							<div class="form-label"><b>Пол</b></div>
+							<div class="row ps-3">
+								<div class="col-md-3 form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="gender_0" value="0"<% if(gender=="0") { %> checked<% } %>>
+									<label class="form-check-label" for="gender_0">Унисекс</label>
+								</div>
+								<div class="col-md-3 form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="gender_1" value="1"<% if(gender=="1") { %> checked<% } %>>
+									<label class="form-check-label" for="gender_1">Женские</label>
+								</div>
+								<div class="col-md-3 form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="gender_2" value="2"<% if(gender=="2") { %> checked<% } %>>
+									<label class="form-check-label" for="gender_2">Мужские</label>
+								</div>
+								<div class="col-md-3 form-check form-check-inline">
+									<input class="form-check-input" type="radio" name="gender" id="gender_3" value="3"<% if(gender=="3") { %> checked<% } %>>
+									<label class="form-check-label" for="gender_3">Детские</label>
+								</div>
+							</div>
+						</div>
+						<div class="mb-3">
+							<label for="frame_type" class="form-label"><b>Тип оправы</b></label>
+							<input type="text" name="form_type" class="form-control" id="frame_type"<% if(frame_type) { %> value="<%= frame_type %>"<% } else { %> placeholder="Full Rim"<% } %> />
+						</div>
+						<div class="mb-3">
+							<label for="frame_form" class="form-label"><b>Форма оправы</b></label>
+							<input type="text" name="frame_form" class="form-control" id="frame_form"<% if(frame_form) { %> value="<%= frame_form %>"<% } else { %> placeholder="Pilot"<% } %> />
+						</div>
+						<div class="mb-3">
+							<label for="frame_material" class="form-label"><b>Материал оправы</b></label>
+							<input type="text" name="frame_material" class="form-control" id="frame_material"<% if(frame_material) { %> value="<%= frame_material %>"<% } else { %> placeholder="Plastic/Metal"<% } %> />
+						</div>
+						<div class="mb-3">
+							<label for="frame_color" class="form-label"><b>Цвет оправы</b></label>
+							<input type="text" name="frame_color" class="form-control" id="frame_color"<% if(frame_color) { %> value="<%= frame_color %>"<% } else { %> placeholder="GUNMETAL"<% } %>>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 align-center">
+					<button type="button" class="btn btn-light bye">Очистить форму</button>
+					<% if(!id) { %>
+					<button type="button" class="btn btn-secondary bye">Отменить</button>
+					<button type="button" class="btn btn-success add">Добавить</button>
+					<% } else { %>
+					<button type="button" class="btn btn-danger del">Удалить</button>
+					<button type="button" class="btn btn-primary new">Копировать</button>
+					<button type="button" class="btn btn-success upd">Сохранить</button>
+					<% } %>
+				</div>
+				<div class="col-md-12" style="height: 24px"></div>
+			</form>
+		</div>
+		
+	</div>
+
+</script>
