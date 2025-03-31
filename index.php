@@ -11,7 +11,7 @@ define('DEF_DEBUG', 0);
 
 define('DEF_MYSQL_USER', 'root');
 define('DEF_MYSQL_PASS', '');
-define('DEF_MYSQL_BASE', 'clicker');
+define('DEF_MYSQL_BASE', 'test');
 define('DEF_MYSQL_HOST', '127.0.0.1');
 define('DEF_MYSQL_PORT', '3306');
 
