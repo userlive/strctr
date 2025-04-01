@@ -398,7 +398,7 @@ class root implements \JsonSerializable, \ArrayAccess
 		return $sapi;
 	}
 
-    public function jsonSerialize() {
+    public function jsonSerialize():mixed{
         return $this->strctr;
     }
 
@@ -416,7 +416,7 @@ class root implements \JsonSerializable, \ArrayAccess
             return $this->cluster = $cluster;
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
 		if(is_array($value))
 			$this->set($value);
@@ -424,17 +424,17 @@ class root implements \JsonSerializable, \ArrayAccess
 			$this->set($offset, $value);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->get($offset);
     }
 
-	public function offsetExists($offset)
+	public function offsetExists($offset):bool
 	{
 		return array_key_exists($offset, $this->strctr);
 	}
 
-	public function offsetUnset($offset)
+	public function offsetUnset($offset): void
 	{
 		unset($this->strctr[$offset]);
 	}
