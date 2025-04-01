@@ -1,6 +1,6 @@
 <?php
 /**
-
+test
 default tempalte: ./templates/test.php;
 
 default table: test;
